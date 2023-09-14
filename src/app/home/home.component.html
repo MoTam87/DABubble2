@@ -1,0 +1,66 @@
+<section class="head">
+    <mat-form-field class="search-field" >
+        <input type="text" matInput placeholder="Search">
+    </mat-form-field>
+
+    <div class="profile-settings">
+        <h1>Max Mustermann</h1>
+        <img src="./assets/character2.png" alt="">
+        <button mat-button [matMenuTriggerFor]="belowMenu">
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu class="profile-menu" #belowMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Log out</button>
+        </mat-menu>
+    </div>
+</section>
+
+<section class="main">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" [opened]="true" mode="side">
+      <div class="sidnav-title">
+        <img src="./assets/sidenav-logo.png" alt="">
+        <h1>Code learning</h1>
+      </div>
+      <mat-accordion>
+        <mat-expansion-panel  (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title class="expansion-title">
+              <img src="./assets/sidenav-channels.png" alt="">
+              <p>Channels</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="expansion-content">
+            <p><b>#</b> Entwicklerteam</p>
+          </div>
+          <div (click)="openDialog()" class="expansion-add">
+            <p><mat-icon fontIcon="add_circle"></mat-icon>Channel hinzufügen</p>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion>
+        <mat-expansion-panel  (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title class="expansion-title">
+              <img src="./assets/sidenav-message.png" alt="">
+              <p>Direktnachrichten</p>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-drawer>
+  </mat-drawer-container>
+
+  <app-home-main-chat></app-home-main-chat>
+  <app-home-thread></app-home-thread>
+</section>
+
+<div class="example-sidenav-content">
+  <button  type="button" mat-button (click)="drawer.toggle()">
+    <p>Workspace-Menü schließen</p>
+  </button>
+</div>
