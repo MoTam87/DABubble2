@@ -19,6 +19,8 @@ export class NewAccountComponent {
   email = "";
   password = "";
   selectedImage: string | ArrayBuffer | null = "./assets/avatar-photo.png";
+  isLoginCard2Hidden = false;
+  isLoginCard1Hidden = true;
 
 
   constructor(private contacts: ContactsServiceService ) {
@@ -61,5 +63,17 @@ export class NewAccountComponent {
     this.selectedImage = imagePath;
   }
 
+  onContinueClick() {
+    this.isLoginCard2Hidden = true;
+    this.isLoginCard1Hidden = false;
+  }
+
+  onArrowBackClick() {
+    // Hier können Sie weitere Aktionen ausführen, wenn auf den "Zurück"-Pfeil geklickt wird.
+    // Um zwischen den Karten zu wechseln, setzen Sie die isLoginCard1Hidden und isLoginCard2Hidden Variablen entsprechend.
+    
+    this.isLoginCard2Hidden = false;
+    this.isLoginCard1Hidden = true;
+  }
 
 }
