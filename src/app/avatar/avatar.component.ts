@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContactInterface } from '../interfaces/contact-interface';
+import { ContactsServiceService } from '../firebase-services/contacts-service.service';
 
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
-export class AvatarComponent {
+export class AvatarComponent  {
 
   selectedImage: string | ArrayBuffer | null = "./assets/avatar-photo.png";
+  
+
+  constructor(private contactsService: ContactsServiceService) { }
+
+
 
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;

@@ -102,6 +102,160 @@ mat-label{
 
 }
 
+.login-card2{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    top: 0;
+
+}
+
+.example-card2{
+    max-width: 606px;
+    height: 700px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+
+    mat-card-header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        mat-card-title{
+            font-size: clamp(2rem, 1rem + 1vw, 2.6rem);
+            font-weight: 700;
+            color: #444DF2;
+            text-align: center;
+        }
+    }
+
+    mat-card-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-block: 25px;
+        padding: 0;
+
+        img{
+            margin-bottom: 30px;
+        }
+
+        .profile-pic{
+            width: 168px;
+            height: 168px;
+            border-radius: 100px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        h2{
+            font-size: 32px;
+            line-height: 43px;
+        }
+
+        p{
+            font-size: 18px;
+        }
+
+        .img-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            img{
+                cursor: pointer;
+                max-width: 100%;
+                maX-height: 100%;
+            }
+        }
+
+        .upload-container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            p{
+                margin: 0;
+            }
+
+            label{
+                cursor: pointer;
+                border: 1px #444DF2 solid;
+                padding: 10px 20px;
+                border-radius: 25px;
+
+                &:hover{
+                    background-color: #444DF2;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.btnsContainer2{
+    width: 100%;
+    top: 20px;
+    position: relative;
+
+    button{
+        border-radius: 30px;
+        height: 45px;
+        float: right;
+        background-color: #444DF2;
+    }
+}
+
+.arrow-back{
+    position: absolute;
+    left: 3%;
+    top: 8%;
+    color: black;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+        color: #535AF1;
+        background-color: #ECEEFE;
+        border-radius: 50px;
+    }
+}
+
+input[type="file" i] {
+   width: 25%;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

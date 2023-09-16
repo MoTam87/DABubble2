@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDrawer } from '@angular/material/sidenav';
 import { DialogNewChannelComponent } from '../dialog-new-channel/dialog-new-channel.component';
+import { ContactInterface } from '../interfaces/contact-interface';
+import { ContactsServiceService } from '../firebase-services/contacts-service.service';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +13,15 @@ import { DialogNewChannelComponent } from '../dialog-new-channel/dialog-new-chan
 export class HomeComponent {
   panelOpenState = false;
 
-  constructor(public dialog: MatDialog){}
+
+  constructor(public dialog: MatDialog, private contacts: ContactsServiceService){}
 
   openDialog(){
     this.dialog.open(DialogNewChannelComponent)
+  }
+
+  getContacts(): ContactInterface[]{
+    return this.contacts.allContacts
   }
 
 

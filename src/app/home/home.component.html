@@ -49,6 +49,9 @@
               <p>Direktnachrichten</p>
             </mat-panel-title>
           </mat-expansion-panel-header>
+          
+          <div class="contactList"><app-contact *ngFor="let contact of getContacts()" [myContact]="contact"></app-contact></div>
+
         </mat-expansion-panel>
       </mat-accordion>
 

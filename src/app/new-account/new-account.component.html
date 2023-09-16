@@ -34,7 +34,46 @@
     <mat-checkbox class="example-margin" [(ngModel)]="privacyAgreed">Ich stimme der <a href="#">Datenschutzerklärung</a> zu</mat-checkbox>
   
     <div class="btnsContainer">
-      <button (click)="addContact()" routerLink="/avatar" [disabled]="!privacyAgreed" mat-raised-button color="primary">Anmeldung</button>
+      <button  routerLink="/avatar" [disabled]="!privacyAgreed" mat-raised-button color="primary">Anmeldung</button>
     </div>
   </mat-card>
 </div>    
+
+<div class="login-card2">
+  <mat-card class="example-card2">
+
+    <a class="arrow-back" routerLink="/newAccount">
+      <mat-icon class=" hvr-skew-backward" fontIcon="arrow_back"></mat-icon>
+    </a>
+
+    <mat-card-header>
+      <mat-card-title>Wähle deinen Avatar</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <img class="profile-pic" *ngIf="selectedImage" [src]="selectedImage" alt="">
+      <h2>Frederik Beck</h2>
+      <p>Aus der Liste wählen</p>
+      <div class="img-container">
+          <img src="./assets/character1.png" (click)="showMainImage('./assets/character10.png')" alt="">
+          <img src="./assets/character2.png" (click)="showMainImage('./assets/character20.png')" alt="">
+          <img src="./assets/character3.png" (click)="showMainImage('./assets/character30.png')" alt="">
+          <img src="./assets/character4.png" (click)="showMainImage('./assets/character40.png')" alt="">
+          <img src="./assets/character5.png" (click)="showMainImage('./assets/character50.png')" alt="">
+          <img src="./assets/character6.png" (click)="showMainImage('./assets/character60.png')" alt="">
+      </div>
+      <div class="upload-container">
+          <p>eingenes Bild verwenden</p>
+          <input type="file" id="real-input" (change)="onFileSelected($event)">
+          <label for="real-input">Bild auswählen</label>
+      </div>
+    </mat-card-content>
+
+
+    <div class="btnsContainer2">
+      <button (click)="addContact()" routerLink="/home"  mat-raised-button color="primary">Weiter</button>
+    </div>
+  </mat-card>
+</div>    
+
+

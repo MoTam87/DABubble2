@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
 import { ContactInterface } from '../interfaces/contact-interface';
-import { Firestore, collectionData, collection, doc, onSnapshot, addDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc, onSnapshot, addDoc, updateDoc } from '@angular/fire/firestore';
 import { Observable, elementAt } from 'rxjs';
 
 @Injectable({
@@ -11,17 +11,19 @@ export class ContactsServiceService {
   allContacts: ContactInterface[] = []
   firestore: Firestore = inject(Firestore);
 
+
   unsubContacts;
   // unsubSingle;
 
- 
-
   constructor() { 
     this.unsubContacts = this.subContactList();
+
+
   }
 
   ngonDestroy(){
     this.unsubContacts();
+    
   }
 
   subContactList(){
@@ -57,9 +59,14 @@ export class ContactsServiceService {
 
 
 
+
+
+
+
   // getSingleDocRef(colId:string, docId:string){
   //   return doc(collection(this.firestore, colId), docId)
   // }
+
 
 
 }

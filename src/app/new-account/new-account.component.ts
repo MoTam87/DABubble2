@@ -18,13 +18,10 @@ export class NewAccountComponent {
   fullName = "";
   email = "";
   password = "";
-
-  
-
+  selectedImage: string | ArrayBuffer | null = "./assets/avatar-photo.png";
 
 
   constructor(private contacts: ContactsServiceService ) {
-  
 
   }
 
@@ -33,8 +30,7 @@ export class NewAccountComponent {
       fullName: this.fullName,
       email: this.email,
       password: this.password,
-      avatar: "",
-      
+      avatar: this.selectedImage,
     }
     this.contacts.addContact(contact)
   }
@@ -43,6 +39,26 @@ export class NewAccountComponent {
 
   isNameInvalid(): boolean {
     return !this.name;
+  }
+
+
+  
+
+  onFileSelected(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const file = inputElement.files?.[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selectedImage = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  showMainImage(imagePath: string): void {
+    this.selectedImage = imagePath;
   }
 
 
