@@ -1,3 +1,36 @@
 <mat-card class="main-card">
-    <mat-card-content>Main chat</mat-card-content>
+    <mat-card-content>
+
+        <mat-card class="header">
+            <mat-card-content>
+                <div class="header-title">
+                    <img src="./assets/character2.png" alt="">
+                    <p>Max Mustermann</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="contact-container">
+            <div class="contact-title">
+                <img src="./assets/character2.png" alt="">
+                <p>Max Mustermann</p>
+            </div>
+            <p class="contact-text">Diese Unterhaltung findet nur zwischen <b>@Max Mustermann</b> und dir statt
+            </p>
+        </div>
+
+        <form class="form">
+            <div class="input-container">
+                <input class="input" matInput #message maxlength="256" placeholder="Nachricht an ...">
+                <img class="icon-send" src="./assets/icon-send.png" alt="">
+                <div class="icons">
+                    <img src="./assets/icon-add.png" alt="">
+                    <img src="./assets/icon-line.png" alt="">
+                    <img src="./assets/icon-emoji.png" alt="">
+                    <img src="./assets/icon-tag.png" alt="">
+                </div>
+            </div>
+        </form>
+
+    </mat-card-content>
 </mat-card>
