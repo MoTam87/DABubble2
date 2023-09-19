@@ -34,6 +34,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ContactComponent } from './contact/contact.component';
+import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
 
 
 
@@ -56,6 +57,7 @@ import { ContactComponent } from './contact/contact.component';
     HomeMainChatComponent,
     DialogNewChannelComponent,
     ContactComponent,
+    DialogContactDetailsComponent,
 
   ],
   imports: [

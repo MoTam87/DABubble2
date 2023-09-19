@@ -5,6 +5,14 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
+    cursor: pointer;
+    padding: 4px 20px;
+    border-radius: 35px;
+
+    &:hover{
+        color: #535AF1;
+        background-color: #ECEEFE;
+    }
 
     img{
         height: 55px;
@@ -16,5 +24,6 @@
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 0;
+        font-weight: 500;
     }
 }

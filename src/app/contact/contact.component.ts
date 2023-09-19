@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ContactsServiceService } from '../firebase-services/contacts-service.service';
 import { ContactInterface } from '../interfaces/contact-interface';
+import { ShowChatCardService } from '../services/show-chat-card.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,10 +12,14 @@ export class ContactComponent {
 
   @Input() myContact !:ContactInterface;
 
-  constructor(private contacts: ContactsServiceService){
+  constructor(public contacts: ContactsServiceService, private chatCard: ShowChatCardService){
 
   }
 
+  openContact() {
+ 
+    this.chatCard.setShow(true);
+  }
 
 
 }

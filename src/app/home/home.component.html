@@ -3,10 +3,10 @@
         <input type="text" matInput placeholder="Search">
     </mat-form-field>
 
-    <div class="profile-settings">
+    <div [matMenuTriggerFor]="belowMenu" class="profile-settings">
         <h1>Max Mustermann</h1>
         <img src="./assets/character2.png" alt="">
-        <button mat-button [matMenuTriggerFor]="belowMenu">
+        <button mat-button>
           <mat-icon>expand_more</mat-icon>
         </button>
         <mat-menu class="profile-menu" #belowMenu="matMenu" yPosition="below">

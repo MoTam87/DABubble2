@@ -1,5 +1,4 @@
 
-
 .head{
     display: flex;
     align-items: center;
@@ -30,6 +29,9 @@
     display: flex !important;
 }
 
+
+//////////menu-panel////////
+ 
 .profile-settings{
     display: flex;
     align-items: center;
@@ -38,12 +40,29 @@
         margin: 0;
         font-weight: 500;
         font-size: 32px;
+        cursor: pointer;
     }
 
     img{
         margin-left: 20px;
     }
 }
+
+::ng-deep .mat-mdc-menu-panel{
+    background-color: #797EF3 !important;
+}
+
+::ng-deep .mat-mdc-menu-item{
+    color: white !important;
+    border-radius: 35px !important;
+}
+
+::ng-deep .mat-mdc-menu-item-text{
+    font-weight: 500 !important;
+    font-size: 21px !important;
+}
+
+///////////////////////
 
 .example-sidenav-content{
 

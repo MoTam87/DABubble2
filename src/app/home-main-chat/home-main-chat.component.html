@@ -3,19 +3,21 @@
 
         <mat-card class="header">
             <mat-card-content>
-                <div class="header-title">
-                    <img src="./assets/character2.png" alt="">
-                    <p>Max Mustermann</p>
+                <div (click)="openDialog()" class="header-title">
+                    <img *ngIf="contacts.updatedContact.length > 0 && contacts.updatedContact[0].avatar" [src]="contacts.updatedContact[0].avatar" alt="">
+                    <p>{{contacts.updatedContact.length > 0 ? contacts.updatedContact[0].fullName : ''}}</p>
                 </div>
             </mat-card-content>
         </mat-card>
 
-        <div class="contact-container">
+        <div *ngIf="chatCard.show" class="contact-container">
             <div class="contact-title">
-                <img src="./assets/character2.png" alt="">
-                <p>Max Mustermann</p>
+                <img *ngIf="contacts.updatedContact.length > 0 && contacts.updatedContact[0].avatar" [src]="contacts.updatedContact[0].avatar" alt="">
+                <p>{{contacts.updatedContact.length > 0 ? contacts.updatedContact[0].fullName : ''}}</p>
             </div>
-            <p class="contact-text">Diese Unterhaltung findet nur zwischen <b>@Max Mustermann</b> und dir statt
+            <p class="contact-text">Diese Unterhaltung findet nur zwischen 
+                <span (click)="openDialog()">@{{contacts.updatedContact.length > 0 ? contacts.updatedContact[0].fullName : ''}}</span>
+                und dir statt
             </p>
         </div>
 

@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
 import { ContactInterface } from '../interfaces/contact-interface';
-import { Firestore, collectionData, collection, doc, onSnapshot, addDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc, onSnapshot, addDoc, updateDoc, getDoc } from '@angular/fire/firestore';
 import { Observable, elementAt } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class ContactsServiceService {
 
   allContacts: ContactInterface[] = []
   firestore: Firestore = inject(Firestore);
+  updatedContact:any[] = []
 
 
   unsubContacts;
@@ -57,15 +58,51 @@ export class ContactsServiceService {
     )
   }
 
+  async updateNote(contact: ContactInterface) {
+   
+    if (contact.id) {
+      try {
+        // Aktualisiere die Daten in Firebase
+        await updateDoc(this.getSingleDocRef('contacts', contact.id), this.getCleanJson(contact));
+        
+        // Lese die Daten aus Firebase aus
+        const updatedContactData = await getDoc(this.getSingleDocRef('contacts', contact.id));
+
+        // Leere das Array, um Platz für die neuen Daten zu machen
+        this.updatedContact = [];
+  
+        // Speichere die aktualisierten Daten in einer Variable
+        this.updatedContact.push(updatedContactData.data());
+  
+        // Jetzt kannst du auf die aktualisierten Daten in der Variable "updatedContact" zugreifen
+        console.log("Aktualisierte Kontakt-Daten:", this.updatedContact);
+        
+        // Wenn du die Daten für weitere Verarbeitung speichern möchtest, kannst du sie einer Variable zuweisen
+        // this.updatedContact = updatedContact;
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+
+  getCleanJson(contact: ContactInterface){
+    return {
+      fullName: contact.fullName,
+      email: contact.email,
+      avatar: contact.avatar,
+    }
+  }
 
 
 
 
 
 
-  // getSingleDocRef(colId:string, docId:string){
-  //   return doc(collection(this.firestore, colId), docId)
-  // }
+
+  getSingleDocRef(colId:string, docId:string){
+    return doc(collection(this.firestore, colId), docId)
+  }
+
 
 
 
