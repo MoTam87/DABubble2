@@ -1,0 +1,102 @@
+.edit{
+    height: 586px;
+    width: 22vw;
+    border-radius: 30px !important;
+
+    .header{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        margin-top: 10px;
+
+        h1{
+            margin-left: 8px;
+            margin-bottom: 0 !important;
+        }
+
+        mat-icon{
+            margin-right: 30px;
+            cursor: pointer;
+        }
+    }
+
+    .contact-img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    
+        img{
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+        }
+    }
+
+    .input-section{
+        margin-block: 29px;
+
+        .input-container{
+            margin-bottom: 10px;
+
+            input{
+                height: 45px;
+                width: 100%;
+                border-radius: 30px;
+                border: 1px solid #ADB0D9; 
+                outline: none;
+                text-indent: 15px;
+            }
+        }
+
+        .input-div{
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+
+            img{
+                width: 27px;
+                height: 27px;
+            }
+
+            span{
+                color: black;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .button-section{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-top: 0;
+
+        button{
+            padding: 12px 25px;
+            border-radius: 50px;
+            height: 49px;
+        }
+
+        .save{
+            color: white;
+            background-color: #444DF2;
+
+            &:hover{
+                background-color: #797EF3;
+            }
+        }
+
+        .close{
+            color: #444DF2;
+            border: 1px solid #797EF3;
+
+            &:hover{
+                background-color: #444DF2;
+                color: white;
+            }
+        }
+    }
+}

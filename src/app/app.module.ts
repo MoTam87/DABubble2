@@ -35,6 +35,8 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ContactComponent } from './contact/contact.component';
 import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
+import { DialogProfilInfoComponent } from './dialog-profil-info/dialog-profil-info.component';
+import { DialogProfilEditComponent } from './dialog-profil-edit/dialog-profil-edit.component';
 
 
 
@@ -58,6 +60,8 @@ import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-c
     DialogNewChannelComponent,
     ContactComponent,
     DialogContactDetailsComponent,
+    DialogProfilInfoComponent,
+    DialogProfilEditComponent,
 
   ],
   imports: [

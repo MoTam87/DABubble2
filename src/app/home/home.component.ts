@@ -4,6 +4,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { DialogNewChannelComponent } from '../dialog-new-channel/dialog-new-channel.component';
 import { ContactInterface } from '../interfaces/contact-interface';
 import { ContactsServiceService } from '../firebase-services/contacts-service.service';
+import { DialogProfilInfoComponent } from '../dialog-profil-info/dialog-profil-info.component';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,10 @@ export class HomeComponent {
 
   getContacts(): ContactInterface[]{
     return this.contacts.allContacts
+  }
+
+  openProfilDialog() {
+    this.dialog.open(DialogProfilInfoComponent);
   }
 
 

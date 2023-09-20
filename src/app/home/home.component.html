@@ -10,7 +10,7 @@
           <mat-icon>expand_more</mat-icon>
         </button>
         <mat-menu class="profile-menu" #belowMenu="matMenu" yPosition="below">
-          <button mat-menu-item>Profile</button>
+          <button (click)="openProfilDialog()" mat-menu-item>Profile</button>
           <button mat-menu-item>Log out</button>
         </mat-menu>
     </div>

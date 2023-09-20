@@ -1,0 +1,99 @@
+::ng-deep .mdc-dialog__surface {
+    border-radius: 30px !important;
+}
+
+::ng-deep .mdc-dialog .mdc-dialog__content{
+    padding: 20px 30px !important;
+}
+
+// ::ng-deep .mat-mdc-dialog-container{
+//     transform: translate(136%, -15%) !important;
+// }
+
+.dialog-container{
+    height: 500px;
+    width: 22vw;
+    border-radius: 30px !important;
+
+    .header{
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        margin-top: 10px;
+
+        h1{
+            margin-left: 8px;
+            margin-bottom: 0 !important;
+        }
+
+        mat-icon{
+            margin-right: 30px;
+            cursor: pointer;
+        }
+    }
+}
+
+.dialog-content{
+
+    .contact-img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    
+        img{
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+        }
+    }
+
+    h1{
+        font-size: 23px;
+        font-weight: 500;
+        color: black;
+        margin-bottom: 0;
+    }
+
+    .online-status{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #92C83E;
+        margin-bottom: 30px;
+    }
+
+    .email-section{
+        display: flex;
+        align-items: center;
+        color: black;
+        font-size: 16px;
+        font-weight: 500;
+        gap: 10px;
+        margin-bottom: 16px;
+
+        img{
+            height: 22px;
+            width: 22px;
+        }
+    }
+
+    a{
+        margin-left: 37px;
+        text-decoration: none;
+    }
+
+    .edit-section{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+        span{
+            color: #0000EE;
+            cursor: pointer;
+        }
+    }
+}
+
+
