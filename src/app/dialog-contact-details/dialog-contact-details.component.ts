@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ContactsServiceService } from '../firebase-services/contacts-service.service';
 
 @Component({
   selector: 'app-dialog-contact-details',
@@ -8,4 +9,5 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DialogContactDetailsComponent {
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public contacts: ContactsServiceService){}
 }

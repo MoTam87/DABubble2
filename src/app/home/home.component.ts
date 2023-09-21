@@ -26,10 +26,16 @@ export class HomeComponent {
   }
 
   openProfilDialog() {
-    this.dialog.open(DialogProfilInfoComponent);
+    this.dialog.open(DialogProfilInfoComponent, {
+      data: { fullname:this.contacts.updatedContact[0].fullName
+      },
+    });
   }
 
-
+  // dialogRef.afterClosed().subscribe((result: any) => {
+  //   console.log('The dialog was closed');
+  //   console.log(result);
+  //   this.updateUser(result)
 
 
 

@@ -5,10 +5,10 @@
     </div>
     <div class="dialog-content" mat-dialog-content>
       <div class="contact-img">
-        <img src="./assets/character20.png" alt="">
+        <img src={{contacts.updatedContact[0].avatar}} alt="">
       </div>
       <div class="edit-section">
-        <h1>Mohamed Tamim</h1>
+        <h1>{{contacts.updatedContact[0].fullName}}</h1>
         <span (click)="openProfilEditDialog()">Bearbeiten</span>
       </div>
       <div class="online-status">
@@ -19,6 +19,7 @@
         <img src="./assets/icon-mail.png" alt="">
         <span>E-Mail-Adresse</span>
       </div>
-      <a href="#">mohamed@wb.de</a>
+      <a href="#">{{contacts.updatedContact[0].email}}</a>
     </div>
   </div>
+  
