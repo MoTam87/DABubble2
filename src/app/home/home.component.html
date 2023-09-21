@@ -4,8 +4,8 @@
     </mat-form-field>
 
     <div [matMenuTriggerFor]="belowMenu" class="profile-settings">
-        <h1>Max Mustermann</h1>
-        <img src="./assets/character2.png" alt="">
+        <h1>{{contacts.updatedContact.length > 0 ? contacts.updatedContact[0].fullName : ''}}</h1>
+        <img *ngIf="contacts.updatedContact.length > 0 && contacts.updatedContact[0].avatar" [src]="contacts.updatedContact[0].avatar" alt="">
         <button mat-button>
           <mat-icon>expand_more</mat-icon>
         </button>

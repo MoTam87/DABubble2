@@ -77,8 +77,6 @@ export class ContactsServiceService {
         // Jetzt kannst du auf die aktualisierten Daten in der Variable "updatedContact" zugreifen
         console.log("Aktualisierte Kontakt-Daten:", this.updatedContact);
         
-        // Wenn du die Daten für weitere Verarbeitung speichern möchtest, kannst du sie einer Variable zuweisen
-        // this.updatedContact = updatedContact;
       } catch (err) {
         console.error(err);
       }

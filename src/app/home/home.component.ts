@@ -15,7 +15,7 @@ export class HomeComponent {
   panelOpenState = false;
 
 
-  constructor(public dialog: MatDialog, private contacts: ContactsServiceService){}
+  constructor(public dialog: MatDialog, public contacts: ContactsServiceService){}
 
   openDialog(){
     this.dialog.open(DialogNewChannelComponent)

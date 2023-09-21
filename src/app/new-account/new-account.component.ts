@@ -37,14 +37,9 @@ export class NewAccountComponent {
     this.contacts.addContact(contact)
   }
 
-
-
   isNameInvalid(): boolean {
     return !this.name;
   }
-
-
-  
 
   onFileSelected(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
