@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ContactsServiceService } from '../firebase-services/contacts-service.service';
 import { ContactInterface } from '../interfaces/contact-interface';
 import { ShowChatCardService } from '../services/show-chat-card.service';
@@ -8,9 +8,11 @@ import { ShowChatCardService } from '../services/show-chat-card.service';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent  {
 
   @Input() myContact !:ContactInterface;
+
+  
 
   constructor(public contacts: ContactsServiceService, private chatCard: ShowChatCardService){
 
@@ -20,6 +22,8 @@ export class ContactComponent {
  
     this.chatCard.setShow(true);
   }
+
+
 
 
 }

@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
       this.showLogo = true;
     }, 8000);
   }
+
+
   }
 
 

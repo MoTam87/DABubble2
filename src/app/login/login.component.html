@@ -21,21 +21,23 @@
       <mat-card-title>Anmeldung</mat-card-title>
       <p>Wir empfehlen dir, die E-Mail_Adresse zu nutzen, die du bei der Arbeit verwendest</p>
     </mat-card-header>
-    <mat-card-content>
-      <mat-form-field   class="form-field">
+    
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field  class="form-field">
         <mat-label>Enter your email</mat-label>
-        <input class="input custom-input" matInput placeholder="pat@example.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <input  class="input custom-input" matInput placeholder="pat@example.com" formControlName="email"/>
+        <mat-error>Email is required</mat-error>
         <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
       <mat-form-field  class="form-field">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput />
+        <mat-error>Password is required</mat-error>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
-    </mat-card-content>
+    
 
     <a routerLink="/resetPassword">Passwort vergessen?</a>
 
@@ -47,11 +49,13 @@
 
     <a #loginRef class="linkToGoogle"><img src="./assets/google.png" alt="">Anmeldung mit Google</a>
     <div class="btnsContainer">
-      <button mat-raised-button color="primary">Anmeldung</button>
+      <button mat-raised-button color="primary" type="submit">Anmeldung</button>
       <button routerLink="/home" class="login-btn" mat-raised-button>Gäste-Login</button>
     </div>
+  </form>
   </mat-card>
+
 </div>    
 
-
-
+<!-- *ngIf="email?.errors?.['required']"
+*ngIf="password?.errors?.['required']" -->

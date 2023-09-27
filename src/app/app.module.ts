@@ -37,10 +37,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
 import { DialogProfilInfoComponent } from './dialog-profil-info/dialog-profil-info.component';
 import { DialogProfilEditComponent } from './dialog-profil-edit/dialog-profil-edit.component';
-
-
-
-
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
 
@@ -87,6 +84,9 @@ import { DialogProfilEditComponent } from './dialog-profil-edit/dialog-profil-ed
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+    
+    
 
 
 

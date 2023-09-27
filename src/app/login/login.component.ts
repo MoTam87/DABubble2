@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
+import { Router } from '@angular/router';
+
+
+
 
 
 @Component({
@@ -7,15 +12,24 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit   {
-  email = new FormControl('', [Validators.required, Validators.email]);
+export class LoginComponent implements OnInit{
   hide = true;
   title = 'Login With Google';
   auth2: any;
   show:boolean = true;
+
+
   
   @ViewChild('loginRef', { static: true }) loginElement!: ElementRef;
-  constructor() {}
+
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  })
+
+
+  constructor(private authService: AuthenticationService, 
+    private router: Router) {}
 
   ngOnInit() {
     // this.googleAuthSDK();
@@ -25,12 +39,32 @@ export class LoginComponent implements OnInit   {
   }
 
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  get password(){
+    return this.loginForm.get('password')
   }
+  get email(){
+    return this.loginForm.get('email')
+  }
+  
+  submit() {
+    if (!this.loginForm.valid) {
+      return;
+    }
+    const emailValue = this.loginForm.get('email')?.value;
+    const passwordValue = this.loginForm.get('password')?.value;
+  
+    if (emailValue && passwordValue) {
+      this.authService.login(emailValue, passwordValue).pipe(
+
+      ).subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
+  }
+
+
+
+}
 
  
 
@@ -69,7 +103,7 @@ export class LoginComponent implements OnInit   {
   //     fjs?.parentNode?.insertBefore(js, fjs);
   //   }(document, 'script', 'google-jssdk'));
   // }
-}
+
 
 
 

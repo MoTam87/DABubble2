@@ -3,29 +3,33 @@
         <h1 mat-dialog-title>Dein Profil bearbeiten</h1>
         <mat-icon mat-dialog-close fontIcon="close"></mat-icon>
     </div>
-    <div mat-dialog-content>
-        <div class="contact-img">
-            <img src="./assets/character20.png" alt="">
-        </div>
-        <div class="input-section">
-            <div class="input-container">
-                <div class="input-div">
-                    <img src="./assets/sidenav-message.png" alt="">
-                    <span>Vollständiger Name</span>
-                </div>
-                <input type="text">
+    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    
+        <div mat-dialog-content>
+            <div class="contact-img">
+                <img src="./assets/character20.png" alt="">
             </div>
-            <div class="input-container">
-                <div class="input-div">
-                    <img src="./assets/icon-mail.png" alt="">
-                    <span>E-Mail-Adresse</span>
+            <div class="input-section">
+                <div class="input-container">
+                    <div class="input-div">
+                        <img src="./assets/sidenav-message.png" alt="">
+                        <span>Vollständiger Name</span>
+                    </div>
+                    <input matInput formControlName="displayName" type="text"/>
                 </div>
-                <input type="text">
+                <div class="input-container">
+                    <div class="input-div">
+                        <img src="./assets/icon-mail.png" alt="">
+                        <span>E-Mail-Adresse</span>
+                    </div>
+                    <input matInput formControlName="email" type="email"/>
+                </div>
             </div>
+        
         </div>
-    </div>
-    <div class="button-section" mat-dialog-actions>
-    <button class="close" mat-button mat-dialog-close>Abbrechen</button>
-    <button class="save" mat-button mat-dialog-close>Speichern</button>
-    </div>
+        <div class="button-section" mat-dialog-actions>
+        <button class="close" mat-button mat-dialog-close>Abbrechen</button>
+        <button type="submit" class="save" mat-button mat-dialog-close>Speichern</button>
+        </div>
+    </form>
 </div>

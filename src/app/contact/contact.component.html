@@ -1,4 +1,5 @@
-<div (click)="openContact(); this.contacts.updateNote(myContact)" class="contact-container">
-    <img src={{myContact.avatar}} alt="">
-    <p>{{myContact.fullName}}</p>
+<div (click)="openContact(); this.contacts.updateUser(myContact)" class="contact-container">
+    <img src={{myContact.photoURL}} alt="">
+    <p>{{myContact.displayName}}</p>
 </div>
+

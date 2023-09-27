@@ -3,15 +3,15 @@
         <input type="text" matInput placeholder="Search">
     </mat-form-field>
 
-    <div [matMenuTriggerFor]="belowMenu" class="profile-settings">
-        <h1>{{contacts.updatedContact.length > 0 ? contacts.updatedContact[0].fullName : ''}}</h1>
-        <img *ngIf="contacts.updatedContact.length > 0 && contacts.updatedContact[0].avatar" [src]="contacts.updatedContact[0].avatar" alt="">
+    <div [matMenuTriggerFor]="belowMenu" *ngIf="user$ | async as user" class="profile-settings">
+        <h1>{{user.displayName}}</h1>
+        <img src={{user.photoURL}} alt="">
         <button mat-button>
           <mat-icon>expand_more</mat-icon>
         </button>
         <mat-menu class="profile-menu" #belowMenu="matMenu" yPosition="below">
           <button (click)="openProfilDialog()" mat-menu-item>Profile</button>
-          <button mat-menu-item>Log out</button>
+          <button (click)="logout()" mat-menu-item>Log out</button>
         </mat-menu>
     </div>
 </section>
@@ -50,7 +50,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           
-          <div class="contactList"><app-contact *ngFor="let contact of getContacts()" [myContact]="contact"></app-contact></div>
+          <div class="contactList"><app-contact *ngFor="let user of users" [myContact]="user"></app-contact></div>
 
         </mat-expansion-panel>
       </mat-accordion>
