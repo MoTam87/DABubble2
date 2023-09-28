@@ -14,6 +14,8 @@ import { ContactInterface } from '../interfaces/contact-interface';
 })
 export class DialogProfilEditComponent {
 
+  avatarImagePath: string = './assets/character20.png'; 
+
   profileForm = new FormGroup({
     displayName: new FormControl('', Validators.required),
      email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,10 +33,15 @@ export class DialogProfilEditComponent {
     this.contacts.currentUserProfile$.pipe(
       untilDestroyed(this)
     ).subscribe((user) => {
-      console.log('das ist', user);
+      console.log('Das ist', user);
       
-      this.profileForm.patchValue({ ...user })
-    })
+      this.profileForm.patchValue({ ...user });
+
+      // Aktualisiere den Bildpfad basierend auf Benutzerdaten, falls vorhanden
+      if (user?.photoURL) {
+        this.avatarImagePath = user.photoURL;
+      }
+    });
   }
 
   saveProfile(){

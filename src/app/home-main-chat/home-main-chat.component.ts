@@ -11,7 +11,9 @@ import { DialogContactDetailsComponent } from '../dialog-contact-details/dialog-
 })
 export class HomeMainChatComponent {
 
-  constructor(public dialog: MatDialog, public contacts: ContactsServiceService, public chatCard: ShowChatCardService){}
+  constructor(public dialog: MatDialog, 
+    public contacts: ContactsServiceService, 
+    public chatCard: ShowChatCardService){}
 
 
 

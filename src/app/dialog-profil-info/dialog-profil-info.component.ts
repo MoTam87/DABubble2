@@ -10,7 +10,9 @@ import { ContactsServiceService } from '../firebase-services/contacts-service.se
 })
 export class DialogProfilInfoComponent {
 
-  constructor(public dialog: MatDialog,  public contacts: ContactsServiceService, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(public dialog: MatDialog,  
+    public contacts: ContactsServiceService, 
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   openProfilEditDialog() {
     this.dialog.open(DialogProfilEditComponent);

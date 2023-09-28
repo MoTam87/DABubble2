@@ -21,6 +21,7 @@ export class ContactComponent  {
   openContact() {
  
     this.chatCard.setShow(true);
+  
   }
 
 

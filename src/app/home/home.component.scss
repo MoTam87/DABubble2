@@ -5,7 +5,7 @@
     justify-content: space-between;
     position: relative;
     left: 23%;
-    top: 4%;
+    transform: translateY(43px);
     width: 77%;
 }
 
@@ -109,7 +109,7 @@
 
 .main{
     display: flex;
-    margin-top: 50px;
+    transform: translateY(67px);
     height: auto;
     width: 98.5%;
     gap: 10px;

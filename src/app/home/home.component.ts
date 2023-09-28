@@ -30,13 +30,8 @@ export class HomeComponent implements OnInit {
     this.dialog.open(DialogNewChannelComponent)
   }
 
-  // getContacts(): ContactInterface[]{
-  //   return this.contacts.allContacts
-  // }
-
   openProfilDialog() {
     this.dialog.open(DialogProfilInfoComponent, {
-  
     });
   }
 
@@ -45,11 +40,6 @@ export class HomeComponent implements OnInit {
       this.router.navigate([''])
     })
   }
-
-  // dialogRef.afterClosed().subscribe((result: any) => {
-  //   console.log('The dialog was closed');
-  //   console.log(result);
-  //   this.updateUser(result)
 
   ngOnInit() {
     // Fetch the list of users from your service

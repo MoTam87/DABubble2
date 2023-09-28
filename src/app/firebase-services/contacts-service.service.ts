@@ -14,7 +14,7 @@ export class ContactsServiceService {
   // firestore: Firestore = inject(Firestore);
   // updatedContact:any[] = []
 
-
+  public currentContact: ContactInterface[] = [];
   // unsubContacts;
   // unsubSingle;
 
@@ -63,6 +63,12 @@ export class ContactsServiceService {
           observer.error(error);
         });
     });
+  }
+
+  
+  getclickedContact(contact: ContactInterface): void {
+    this.currentContact = [];
+    this.currentContact.push(contact); 
   }
 
   
