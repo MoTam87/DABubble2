@@ -38,6 +38,9 @@ import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-c
 import { DialogProfilInfoComponent } from './dialog-profil-info/dialog-profil-info.component';
 import { DialogProfilEditComponent } from './dialog-profil-edit/dialog-profil-edit.component';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import {MatListModule} from '@angular/material/list';
+
+
 
 
 
@@ -85,6 +88,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    MatListModule
     
     
 

@@ -7,6 +7,8 @@ import { ContactsServiceService } from '../firebase-services/contacts-service.se
 import { DialogProfilInfoComponent } from '../dialog-profil-info/dialog-profil-info.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { Route, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-home',
@@ -18,12 +20,15 @@ export class HomeComponent implements OnInit {
 
   user$ = this.contacts.currentUserProfile$;
   users: ContactInterface[] = []; // Create an array to store users
+  
+  
 
 
   constructor(public dialog: MatDialog, 
     private contacts: ContactsServiceService, 
     private auth: AuthenticationService,
-    private router: Router
+    private router: Router,
+  
     ){}
 
   openDialog(){

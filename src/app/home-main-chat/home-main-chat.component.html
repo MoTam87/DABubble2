@@ -10,21 +10,37 @@
             </mat-card-content>
         </mat-card>
 
-        <div *ngIf="chatCard.show" class="contact-container">
-            <div class="contact-title">
-                <img  [src]="contacts.currentContact[0].photoURL" alt="">
-                <p>{{contacts.currentContact[0].displayName}}</p> 
+        <div class="chat-container" *ngIf="messages$ | async as messages">
+
+            <div class="chat-area">
+                <div *ngFor="let message of messages">
+                    {{ message.text }}
+                </div>
             </div>
-            <p class="contact-text">Diese Unterhaltung findet nur zwischen 
-                <span (click)="openDialog()">@{{contacts.currentContact[0].displayName}}</span>
-                und dir statt
-            </p>
+
+        
+            <div *ngIf="!messages.length && chatCard.show" class="contact-container">
+                <div class="contact-title">
+                    <img  [src]="contacts.currentContact[0].photoURL" alt="">
+                    <p>{{contacts.currentContact[0].displayName}}</p> 
+                </div>
+                <p class="contact-text">Diese Unterhaltung findet nur zwischen 
+                    <span (click)="openDialog()">@{{contacts.currentContact[0].displayName}}</span>
+                    und dir statt
+                </p>
+            </div>
+
+
         </div>
 
         <form class="form">
-            <div class="input-container">
-                <input class="input" matInput #message maxlength="256" placeholder="Nachricht an ...">
-                <img class="icon-send" src="./assets/icon-send.png" alt="">
+            <div class="input-
+            container">
+                <input [formControl] = 'messageControl' class="input" (keydown.enter)="sendMessage()" matInput #message maxlength="256" placeholder="Nachricht an ...">
+                <!-- <img class="icon-send" src="./assets/icon-send.png" alt=""> -->
+                <button (click)="sendMessage()" class="icon-send" mat-icon-button matSuffix>
+                    <mat-icon>send</mat-icon>
+                </button>
                 <div class="icons">
                     <img src="./assets/icon-add.png" alt="">
                     <img src="./assets/icon-line.png" alt="">
