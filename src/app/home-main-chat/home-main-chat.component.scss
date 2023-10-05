@@ -145,12 +145,62 @@
 
 
 
+
+    .chat-bubble-container{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+
+
     .chat-area{
         position: relative;
-        top: 100%;
-        left: 2%;
+        top: 75px;
+        left: 2.5%;
+        height: calc(100vh - 470px);
+        width: 99%;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        padding-inline: 2.5%;
+
+        overflow: auto;
+
+        &>:first-child {
+            margin-top: auto;
+        }
+
+        .divider{
+            margin-top: 35px;
+        }
+
+        .chat-bubble{
+            width: fit-content;
+            background-color: #ECEEFE;
+            padding: 15px;
+            border-radius: 0px 30px 30px 30px;
+            
+        }
     }
+
+    .chat-bubble-container.sender{
+        justify-content: flex-end;
+    }
+
+    .chat-bubble-container.sender > .chat-bubble{
+        background-color: #797EF3;
+        color: white;
+        border-radius: 30px 0px 30px 30px;
+    }
+
+   
+
+
 }
+
+
+
+
 
 
 

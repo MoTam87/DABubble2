@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
     // Fetch the list of users from your service
     this.contacts.getAllUsers().subscribe(users => {
       this.users = users;
+      
     });
   }
 

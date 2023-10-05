@@ -13,12 +13,19 @@
         <div class="chat-container" *ngIf="messages$ | async as messages">
 
             <div class="chat-area">
-                <div *ngFor="let message of messages">
-                    {{ message.text }}
-                </div>
+                <ng-container *ngIf="user$ | async as user">
+                    <div *ngFor="let message of messages">
+                        <div class="chat-bubble-container"  [ngClass]="{ 'sender': message.senderId === userId }">
+                            <div class="chat-bubble">
+                                {{ message.text }}
+                            </div>
+                        </div>
+                        <mat-divider class="divider"></mat-divider>
+                    </div>
+
+                </ng-container>
             </div>
 
-        
             <div *ngIf="!messages.length && chatCard.show" class="contact-container">
                 <div class="contact-title">
                     <img  [src]="contacts.currentContact[0].photoURL" alt="">
@@ -29,7 +36,6 @@
                     und dir statt
                 </p>
             </div>
-
 
         </div>
 

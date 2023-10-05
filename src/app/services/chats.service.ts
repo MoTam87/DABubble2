@@ -3,7 +3,7 @@ import { Firestore, collection, addDoc, updateDoc, Timestamp,collectionData, doc
 import { ContactInterface } from '../interfaces/contact-interface';
 import { BehaviorSubject, Observable, Subject, concatMap,  of,   from } from 'rxjs';
 import { ContactsServiceService } from '../firebase-services/contacts-service.service';
-import { Chat, Message } from '../interfaces/chat-interface';
+import { Chat, ChatUsers, Message } from '../interfaces/chat-interface';
 import { query, where, getDocs } from 'firebase/firestore';
 import { switchMap, map, tap, take  } from 'rxjs/operators';
 
@@ -18,8 +18,15 @@ export class ChatsService {
   private storedChatIdSubject = new BehaviorSubject<string>('');
   storedChatId$ = this.storedChatIdSubject.asObservable();
 
+ 
+ 
+
+
   constructor(private firestore: Firestore,
-    private contacts: ContactsServiceService) { }
+    private contacts: ContactsServiceService) { 
+      
+  
+    }
 
     createChat(otherUser: ContactInterface): Observable<string> {
       const ref = collection(this.firestore, 'chats');
@@ -120,6 +127,7 @@ export class ChatsService {
     const ref = collection(this.firestore, 'chats', chatId, 'messages');
     const chatRef = doc(this.firestore, 'chats', chatId);
     const today = Timestamp.fromDate(new Date());
+ 
     return this.contacts.currentUserProfile$.pipe(
       take(1),
       concatMap((user) =>
@@ -131,7 +139,7 @@ export class ChatsService {
       ),
       concatMap(() =>
         updateDoc(chatRef, { lastMessage: message, lastMessageDate: today })
-      )
+      ),
     );
   }
 
@@ -146,15 +154,9 @@ export class ChatsService {
   }
 
 
+  
 
-
-
-
-
-
-
-
-
+  
 
 
 }

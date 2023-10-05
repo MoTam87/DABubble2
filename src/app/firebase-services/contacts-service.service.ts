@@ -69,6 +69,8 @@ export class ContactsServiceService {
   getclickedContact(contact: ContactInterface): void {
     this.currentContact = [];
     this.currentContact.push(contact); 
+    console.log('der user ist', this.currentContact);
+    
   }
 
   

@@ -19,3 +19,10 @@ export interface Message {
     sentDate: Date;
 
 }
+
+export interface ChatUsers {
+    displayName: string;
+    photoURL: string;
+
+
+}
