@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, take } from 'rxjs';
@@ -17,19 +17,14 @@ import { ContactInterface } from '../interfaces/contact-interface';
 export class HomeMainChatComponent implements OnInit  {
 
   messageControl = new FormControl ('');
-
   user$ = this.contacts.currentUserProfile$;
   userId !: String;
-
-
-
-
   storedChatId: string = '';
   messages$: Observable<Message[]> | undefined;
   users$: Observable<ChatUsers[]> | undefined;
- 
 
-  
+  @ViewChild('endOfChat') endOfChat!:ElementRef;
+ 
 
   constructor(public dialog: MatDialog, 
     public contacts: ContactsServiceService, 
@@ -44,15 +39,25 @@ export class HomeMainChatComponent implements OnInit  {
 
   sendMessage() {
     const message = this.messageControl.value;
-  
     this.chatsService.storedChatId$.pipe(
       take(1) // Nimm nur den ersten emittierten Wert
     ).subscribe(selectedChatId => {
       if (selectedChatId && message) {
-        this.chatsService.addChatMessage(selectedChatId, message).subscribe();
+        this.chatsService.addChatMessage(selectedChatId, message).subscribe( () => {
+          this.scrollToBottom();
+        });
         this.messageControl.setValue('');
       }
     });
+  }
+
+  scrollToBottom() {
+    setTimeout(() => {
+      if (this.endOfChat) {
+        this.endOfChat.nativeElement.scrollIntoView({ behavior: "smooth"})
+      }
+    }, 10);
+
   }
 
   ngOnInit() {
@@ -60,21 +65,14 @@ export class HomeMainChatComponent implements OnInit  {
       this.storedChatId = chatId;
       if (chatId) {
         this.messages$ = this.chatsService.getChatMessages$(chatId);
-        this.messages$.subscribe(messages => {
-          console.log('Messages:', messages);
-        }
-        )
+        this.messages$.subscribe( () => {
+          this.scrollToBottom();
+        })
       }
     });
-
     this.user$.subscribe( user => {
       this.userId = user?.uid
-      
-    }
-      
-    )
-
-  
+    })
   }
 
 

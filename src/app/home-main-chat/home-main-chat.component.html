@@ -15,14 +15,28 @@
             <div class="chat-area">
                 <ng-container *ngIf="user$ | async as user">
                     <div *ngFor="let message of messages">
-                        <div class="chat-bubble-container"  [ngClass]="{ 'sender': message.senderId === userId }">
-                            <div class="chat-bubble">
-                                {{ message.text }}
+
+                        <mat-divider class="divider"></mat-divider>
+
+                        <div class="chat-bubble-container" [ngClass]="{ 'sender': message.senderId === userId }">
+                            
+                            <img class="user-img" [src]="message.senderId === userId ? user.photoURL : contacts.currentContact[0].photoURL" 
+                                [ngClass]="{ 'senderimg': message.senderId === userId }" 
+                             alt="">
+                            <div class="chat-bubble-box" [ngClass]="{ 'senderTitle': message.senderId === userId }">
+                                <div class="chat-bubble-title">
+                                    <p class="UserName">Adnan Tamim</p>
+                                    <p class="sendTime">15:00</p>
+                                </div>
+                                <div class="chat-bubble">
+                                    {{ message.text }}
+                                </div>
                             </div>
                         </div>
-                        <mat-divider class="divider"></mat-divider>
+                        
+                        
                     </div>
-
+                    <div #endOfChat></div>
                 </ng-container>
             </div>
 
