@@ -12,13 +12,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import {DatePipe, NgIf} from '@angular/common';
 import { NewAccountComponent } from './new-account/new-account.component';
 import {NgFor} from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AvatarComponent } from './avatar/avatar.component';
-
 import { HomeComponent } from './home/home.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { HomeMenuComponent } from './home-menu/home-menu.component';
@@ -39,6 +38,10 @@ import { DialogProfilInfoComponent } from './dialog-profil-info/dialog-profil-in
 import { DialogProfilEditComponent } from './dialog-profil-edit/dialog-profil-edit.component';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import {MatListModule} from '@angular/material/list';
+import { DateDisplayPipe } from './pipes/date-display.pipe';
+import { OnlyDateDisplayPipe } from './pipes/only-date-display.pipe';
+import { PickerModule } from "@ctrl/ngx-emoji-mart";
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -62,6 +65,8 @@ import {MatListModule} from '@angular/material/list';
     DialogContactDetailsComponent,
     DialogProfilInfoComponent,
     DialogProfilEditComponent,
+    DateDisplayPipe,
+    OnlyDateDisplayPipe,
 
   ],
   imports: [
@@ -88,7 +93,9 @@ import {MatListModule} from '@angular/material/list';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    MatListModule
+    MatListModule,
+    PickerModule,
+    HttpClientModule
     
     
 
@@ -97,7 +104,7 @@ import {MatListModule} from '@angular/material/list';
 
 
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

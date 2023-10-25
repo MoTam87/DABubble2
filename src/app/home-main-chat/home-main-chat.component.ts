@@ -8,11 +8,16 @@ import { ChatUsers, Message } from '../interfaces/chat-interface';
 import { ChatsService } from '../services/chats.service';
 import { ShowChatCardService } from '../services/show-chat-card.service';
 import { ContactInterface } from '../interfaces/contact-interface';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-main-chat',
   templateUrl: './home-main-chat.component.html',
-  styleUrls: ['./home-main-chat.component.scss']
+  styleUrls: ['./home-main-chat.component.scss'],
+  template: `
+  <input type="file" (change)="onFileSelected($event)">
+  <img src="./assets/icon-add.png" alt="" (click)="uploadFile()">
+`,
 })
 export class HomeMainChatComponent implements OnInit  {
 
@@ -22,14 +27,24 @@ export class HomeMainChatComponent implements OnInit  {
   storedChatId: string = '';
   messages$: Observable<Message[]> | undefined;
   users$: Observable<ChatUsers[]> | undefined;
+  showEmojiPicker = false;
+  selectedFile !: File;
 
   @ViewChild('endOfChat') endOfChat!:ElementRef;
+
+  public textArea: string = '';
+
+  public addEmoji(event: any) {
+    this.textArea = `${this.textArea}${event.emoji.native}`;
+    this.showEmojiPicker = false;
+  }
  
 
   constructor(public dialog: MatDialog, 
     public contacts: ContactsServiceService, 
     public chatCard: ShowChatCardService,
-    private chatsService: ChatsService){}
+    private chatsService: ChatsService,
+    private http: HttpClient){}
 
     
 
@@ -57,8 +72,8 @@ export class HomeMainChatComponent implements OnInit  {
         this.endOfChat.nativeElement.scrollIntoView({ behavior: "smooth"})
       }
     }, 10);
-
   }
+  
 
   ngOnInit() {
     this.chatsService.storedChatId$.subscribe(chatId => {
@@ -75,6 +90,38 @@ export class HomeMainChatComponent implements OnInit  {
     })
   }
 
+  toggleEmojiPicker() {
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
+
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadFile(): void {
+    if (!this.selectedFile) {
+      console.error('No file selected!');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+
+    this.http.post('your-upload-url', formData)
+      .subscribe(response => {
+        console.log('File uploaded successfully:', response);
+      }, error => {
+        console.error('Error uploading file:', error);
+      });
+  }
+  
+  
+  
+  
+  
+  
+  
 
   
 

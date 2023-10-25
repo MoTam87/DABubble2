@@ -1,9 +1,10 @@
+import { Timestamp } from "@angular/fire/firestore";
 import { ContactInterface } from "./contact-interface";
 
 export interface Chat {
     id: string;
     lastMessage?: string;
-    lastMessageDAte?: Date;
+    lastMessageDAte?: Date & Timestamp;
     userIds: string[];
     users: ContactInterface[];
 
@@ -16,7 +17,7 @@ export interface Message {
     id: string;
     text: string;
     senderId: string;
-    sentDate: Date;
+    sentDate: Date & Timestamp;
 
 }
 

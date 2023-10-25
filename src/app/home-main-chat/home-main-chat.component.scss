@@ -32,6 +32,11 @@
 .input-container{
     width: 100%;
     position: relative;
+
+    .emoji-container{
+        position: absolute;
+        transform: translate(41%, -100%);
+    }
 }
 
 .icon-send{
@@ -195,13 +200,19 @@
                 
 
                 p{
-                    font-weight: 600;
+                    font-weight: 500;
                     font-size: 18px;
                 }
 
                 .chat-bubble-title{
                     display: flex;
                     gap: 20px;
+
+                    .sendTime{
+                        font-size: 14px;
+                        color: #686868;
+                        
+                    }
                 }
             }
         }
@@ -214,6 +225,26 @@
             font-size: 18px;
             
         }
+
+        .flex-container {
+            position: relative;
+          
+            .date {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              z-index: 1;
+              border: 1px solid #ADB0D9;
+              padding: 5px 15px;
+              border-radius: 30px;
+              background-color: white;
+            }
+          
+            .divider {
+              flex: 1;
+            }
+          }
     }
 
     .chat-bubble-container.sender{
